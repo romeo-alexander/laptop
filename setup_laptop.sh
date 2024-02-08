@@ -4,6 +4,7 @@ set -eo pipefail
 ## Install Homebrew
 if ! command -v brew &> /dev/null
 then
+    "Installing Homebrew..."
     # Fetch and execute Homebrew installation script
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -15,30 +16,43 @@ then
 
     # To uninstall Homebrew, run the following command:
     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+else
+    echo "Homebrew is already installed"
 fi
 
 if ! command -v brew &> /dev/null
 then
+    echo "Installing gh..."
     brew install gh
+else
+    echo "gh is already installed"
 fi
 
 # Install iterm2 Terminal emulator
 if [ -z $(mdfind "kMDItemCFBundleIdentifier == com.googlecode.iterm2") ]
 then
+    echo "Installing iterm2..."
     brew install --cask iterm2
+else
+    echo "iterm2 is already installed"
 fi
-exit
 
 # Install Visual Studio Code
 if ! command -v code &> /dev/null then
 then
+    echo "Installing vscode..."
     brew install --cask visual-studio-code
+else
+    echo "vscode is already installed"
 fi
 
 # Install pipx
 if ! command -v pipx &> /dev/null then
 then
+    echo "Installing pipx..."
     brew install pipx
+else
+    echo "pipx is already installed"
 fi
 
 # Ensure that pipx is in the PATH
@@ -58,4 +72,6 @@ then
    
     # To uninstall Oh My Zsh, run the following command:
     # uninstall_oh_my_zsh 
+else
+    echo "Oh My Zsh is already installed"
 fi
