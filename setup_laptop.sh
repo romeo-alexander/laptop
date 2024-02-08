@@ -61,7 +61,7 @@ git config --global alias.st status
 
 
 # Install Oh My Zsh
-if [ ! -f ~/.oh-my-zsh ]; then
+if [ -z ${ZSH+x} ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    
     # To uninstall Oh My Zsh, run the following command:
