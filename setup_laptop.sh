@@ -36,7 +36,7 @@ then
 fi
 
 # Install pipx
-if ! command -v code &> /dev/null then
+if ! command -v pipx &> /dev/null then
 then
     brew install pipx
 fi
