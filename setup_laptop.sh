@@ -38,7 +38,7 @@ else
 fi
 
 # Install Visual Studio Code
-if ! command -v code &> /dev/null then
+if ! command -v code &> /dev/null
 then
     echo "Installing vscode..."
     brew install --cask visual-studio-code
@@ -47,7 +47,7 @@ else
 fi
 
 # Install pipx
-if ! command -v pipx &> /dev/null then
+if ! command -v pipx &> /dev/null
 then
     echo "Installing pipx..."
     brew install pipx
