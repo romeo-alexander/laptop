@@ -2,8 +2,7 @@
 set -eo pipefail
 
 ## Install Homebrew
-if ! command -v brew &> /dev/null
-then
+if ! command -v brew &> /dev/null; then
     "Installing Homebrew..."
     # Fetch and execute Homebrew installation script
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -20,8 +19,7 @@ else
     echo "Homebrew is already installed"
 fi
 
-if ! command -v brew &> /dev/null
-then
+if ! command -v brew &> /dev/null; then
     echo "Installing gh..."
     brew install gh
 else
@@ -29,8 +27,7 @@ else
 fi
 
 # Install iterm2 Terminal emulator
-if [ -z $(mdfind "kMDItemCFBundleIdentifier == com.googlecode.iterm2") ]
-then
+if [ -z $(mdfind "kMDItemCFBundleIdentifier == com.googlecode.iterm2") ]; then
     echo "Installing iterm2..."
     brew install --cask iterm2
 else
@@ -38,8 +35,7 @@ else
 fi
 
 # Install Visual Studio Code
-if ! command -v code &> /dev/null
-then
+if ! command -v code &> /dev/null; then
     echo "Installing vscode..."
     brew install --cask visual-studio-code
 else
@@ -47,8 +43,7 @@ else
 fi
 
 # Install pipx
-if ! command -v pipx &> /dev/null
-then
+if ! command -v pipx &> /dev/null; then
     echo "Installing pipx..."
     brew install pipx
 else
@@ -66,8 +61,7 @@ git config --global alias.st status
 
 
 # Install Oh My Zsh
-if ! command -v omz &> /dev/null
-then
+if [ ! -f ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    
     # To uninstall Oh My Zsh, run the following command:
