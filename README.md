@@ -6,3 +6,5 @@ Run the following to install brew, gh, vscode, and omz
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/romeo-alexander/laptop/main/setup_laptop.sh)"
 ```
+
+This is a test comment
