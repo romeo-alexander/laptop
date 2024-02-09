@@ -24,3 +24,12 @@ else
 fi
 
 gh auth login -h GitHub.com -p ssh
+
+touch ~/.ssh/config
+
+cat << "EOF" >> ~/.ssh/config
+Host github.com
+    HostName github.com
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/id_ed25519_sk
+EOF
