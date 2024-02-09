@@ -19,7 +19,7 @@ else
     echo "Homebrew is already installed"
 fi
 
-if ! command -v brew &> /dev/null; then
+if ! command -v gh &> /dev/null; then
     echo "Installing gh..."
     brew install gh
 else
