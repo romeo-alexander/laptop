@@ -8,7 +8,7 @@ else
     echo "ykman is already installed"
 fi
 
-ykman config usb --disable OTP
+ykman config usb --force --disable OTP
 
 if [[ ! $(which ssh) =~ "homebrew" ]]; then
     echo "Installing openssh..."
