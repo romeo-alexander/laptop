@@ -43,6 +43,10 @@ unset GH_TOKEN # Unset GH_TOKEN if it exists
 
 gh auth login -h github.com -p ssh
 
-echo "Testing yubikey-backed SSH connection to github.com..."
+echo "Click on 'Configure SSO' and authorize the Ramp organization at
+at https://github.com/settings/keys"
 
-ssh -T git@github.com
+open "https://github.com/settings/keys"
+
+ssh -T "git@github.com"
+
