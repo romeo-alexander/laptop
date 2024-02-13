@@ -1,34 +1,22 @@
-#!/bin/bash
+#!/bin/zsh
 set -eo pipefail
 
-if ! command -v ykman &> /dev/null; then
-    echo "Installing ykman..."
-    brew install ykman
-else
-    echo "ykman is already installed"
-fi
+(( $+commands[ykman])) ||  brew install ykman
 
 ykman config usb --force --disable OTP
 
-if [[ ! $(which ssh) =~ "homebrew" ]]; then
-    echo "Installing openssh..."
+[[ $(which ssh) = *"homebrew"* ]] || {
     brew install openssh
     reset
-else
-    echo "brew version of openssh is already installed"
-fi
+}
 
-if [[ -z "$RAMP_USERNAME" ]]; then
-    read -p "Enter your ramp username: " RAW_RAMP_USERNAME 
-    # Strip e-mail domain
+
+(( $+RAMP_USERNAME )) || {
+    read "RAW_RAMP_USERNAME?Enter your ramp username: " 
     export RAMP_USERNAME=$(echo $RAW_RAMP_USERNAME | cut -d "@" -f 1)
-fi
+}
 
-if [ ! -f ~/.ssh/id_ed25519_sk ]; then
-    ssh-keygen -t ed25519-sk -C "$RAMP_USERNAME@ramp.com"
-else
-    echo "Hardware backed SSH key already exists"
-fi
+[[ -s "~/.ssh/id_ed25519_sk" ]] || ssh-keygen -t ed25519-sk -C "$RAMP_USERNAME@ramp.com"
 
 touch ~/.ssh/config
 
@@ -49,4 +37,3 @@ at https://github.com/settings/keys"
 open "https://github.com/settings/keys"
 
 ssh -T "git@github.com"
-
