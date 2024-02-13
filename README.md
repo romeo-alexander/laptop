@@ -10,5 +10,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/romeo-alexander/laptop/mai
 To setup your yubikey, run the following (after inserting the yubikey into a usbc port):
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/romeo-alexander/laptop/main/setup_yubikey.sh)"
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/romeo-alexander/laptop/main/setup_yubikey.sh)"
 ```
