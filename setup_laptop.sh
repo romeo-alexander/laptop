@@ -8,7 +8,7 @@ if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # Add Homebrew to the PATH for future sessions
-    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/romeo/.zprofile
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 
     # Activate Homebrew in the current shell session
     eval "$(/opt/homebrew/bin/brew shellenv)"
