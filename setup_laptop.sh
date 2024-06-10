@@ -2,7 +2,7 @@
 
 ## Install Homebrew
 if ! command -v brew &> /dev/null; then
-    "Installing Homebrew..."
+    echo "Installing Homebrew..."
     # Fetch and execute Homebrew installation script
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
