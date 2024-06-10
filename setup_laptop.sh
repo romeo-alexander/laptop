@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eo pipefail
 
 ## Install Homebrew
 if ! command -v brew &> /dev/null; then
