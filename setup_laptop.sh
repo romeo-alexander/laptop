@@ -41,26 +41,8 @@ else
     echo "vscode is already installed"
 fi
 
-# Install pipx
-if ! command -v pipx &> /dev/null; then
-    echo "Installing pipx..."
-    brew install pipx
-else
-    echo "pipx is already installed"
-fi
-
-# Ensure that pipx is in the PATH
-pipx ensurepath > /dev/null 2>&1
-
-# Recommended git aliases https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-
-
 # Install Oh My Zsh
-if [ ! -n "$ZSH" ]; then
+if [[ ! -d ~/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    
     # To uninstall Oh My Zsh, run the following command:
