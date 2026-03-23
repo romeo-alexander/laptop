@@ -32,7 +32,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 ## Restore Brew dependencies
 echo "Installing Brew dependencies from Brewfile..."
-brew bundle --file="$SCRIPT_DIR/Brewfile" --no-lock
+brew bundle install --file="$SCRIPT_DIR/Brewfile"
 
 ## Symlink configs
 echo "Symlinking configs..."
