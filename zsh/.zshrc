@@ -6,11 +6,9 @@ export ZSH_CUSTOM="$ZSH/custom"
 path=(
   "$HOME/bin"
   "$HOME/go/bin"
-  "$HOME/.chalk/bin"
   $path
 )
 export PATH
-export CHALK_INSTALL="$HOME/.chalk"
 
 # Completion cache lives outside $HOME
 ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
