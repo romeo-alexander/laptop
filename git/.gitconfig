@@ -1,0 +1,83 @@
+# ~/.gitconfig  — with delta integration
+############################################################
+
+[user]
+	name  = romeo
+	# email = SET YOUR EMAIL HERE
+
+[core]
+	excludesfile = ~/.gitignore
+	editor       = vim
+	attributesfile = ~/.gitattributes
+
+[alias]
+	co   = checkout
+	ci   = commit
+	st   = status
+	br   = branch
+	adgo = log --all --decorate --graph --oneline
+	oops = commit --amend --no-edit
+	lg   = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+
+	# full-colour log with diff of each commit
+	lgd  = log --graph --patch --color=always \
+	        --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr)%Creset' | delta
+
+	ds   = diff --staged
+	rom  = !git fetch origin && git rebase origin/master
+
+[rerere]
+	enabled     = true
+	autoupdate  = true
+
+[pull]
+	rebase = true
+
+[advice]
+	skippedCherryPicks = false
+
+[branch "main"]
+	pushRemote = NOPE
+
+[pile]
+	cleanupRemoteOnSubmitFailure = true
+
+############################################################
+# Delta as the default pager for anything diff-ish
+[pager]
+	branch = false
+	diff       = delta
+	log        = delta
+	show       = delta
+	reflog     = delta
+	stash      = delta
+
+[diff]
+	tool         = vimdiff3
+	colorMoved   = default
+
+[difftool]
+	prompt = false
+
+[merge]
+	tool          = vimdiff3
+	conflictstyle = diff3
+
+############################################################
+# Delta's own knobs
+[delta]
+	theme             = OneHalfDark
+	side-by-side      = true
+	line-numbers      = true
+	line-numbers-left-style  = "blue"
+	line-numbers-right-style = "cyan"
+	navigate          = true
+	minus-style       = "syntax #3a0707"
+	plus-style        = "syntax #073a07"
+
+############################################################
+[interactive]
+	diffFilter = delta --color-only
+
+[commit]
+	verbose = true

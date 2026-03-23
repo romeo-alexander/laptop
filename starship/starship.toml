@@ -1,0 +1,53 @@
+# ~/.config/starship.toml
+# ── Minimal-pure, two-line prompt ─────────────────────────────────────
+# Line 1: information; Line 2: single glyph that changes colour
+
+add_newline = false                 # we insert the one newline ourselves
+command_timeout = 1000              # show ⏱ only if cmd >1 s
+
+format = """
+$directory$git_branch$git_state$git_status$python$cmd_duration
+$character"""
+
+# ── Modules ───────────────────────────────────────────────────────────
+[directory]
+truncation_length = 3               # ~/p/rj instead of full path
+style = "blue bold"
+
+[git_branch]
+symbol = " "
+style  = "purple bold"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style  = "cyan"
+format = '[( $all_status$ahead_behind$stashed)]($style)'
+conflicted = "✖"
+modified   = "●"
+untracked  = "…"
+staged     = "+"
+renamed    = "»"
+deleted    = "✘"
+stashed    = "≡"
+ahead      = "⇡${count}"
+behind     = "⇣${count}"
+
+[git_state]
+style  = "bright-black"
+format = '([$state( $progress_current/$progress_total)]($style) ) '
+
+[python]
+symbol = "🐍 "
+style  = "bright-black"
+format = "[$symbol$virtualenv]($style) "
+
+[cmd_duration]
+min_time = 1000                     # 1 s threshold
+style    = "yellow"
+format   = "[$duration]($style) "
+
+# ── Prompt glyph ──────────────────────────────────────────────────────
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol   = "[✖](bold red)"
+vimcmd_symbol  = "[❮](bold yellow)"

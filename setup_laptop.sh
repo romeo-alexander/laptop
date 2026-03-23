@@ -18,35 +18,46 @@ else
     echo "Homebrew is already installed"
 fi
 
-if ! command -v gh &> /dev/null; then
-    echo "Installing gh..."
-    brew install gh
-else
-    echo "gh is already installed"
-fi
-
-# Install iterm2 Terminal emulator
-if [ -z $(mdfind "kMDItemCFBundleIdentifier == com.googlecode.iterm2") ]; then
-    echo "Installing iterm2..."
-    brew install --cask iterm2
-else
-    echo "iterm2 is already installed"
-fi
-
-# Install Visual Studio Code
-if ! command -v code &> /dev/null; then
-    echo "Installing vscode..."
-    brew install --cask visual-studio-code
-else
-    echo "vscode is already installed"
-fi
-
 # Install Oh My Zsh
 if [[ ! -d ~/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-   
+
     # To uninstall Oh My Zsh, run the following command:
-    # uninstall_oh_my_zsh 
+    # uninstall_oh_my_zsh
 else
     echo "Oh My Zsh is already installed"
 fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+## Restore Brew dependencies
+echo "Installing Brew dependencies from Brewfile..."
+brew bundle --file="$SCRIPT_DIR/Brewfile" --no-lock
+
+## Symlink configs
+echo "Symlinking configs..."
+
+# tmux
+ln -sf "$SCRIPT_DIR/tmux/.tmux.conf" ~/.tmux.conf
+
+# neovim
+mkdir -p ~/.config ~/.config/karabiner ~/.claude
+ln -sfn "$SCRIPT_DIR/nvim" ~/.config/nvim
+
+# karabiner
+ln -sf "$SCRIPT_DIR/karabiner/karabiner.json" ~/.config/karabiner/karabiner.json
+
+# zsh
+ln -sf "$SCRIPT_DIR/zsh/.zshrc" ~/.zshrc
+ln -sf "$SCRIPT_DIR/zsh/.zaliases" ~/.zaliases
+
+# git
+ln -sf "$SCRIPT_DIR/git/.gitconfig" ~/.gitconfig
+
+# starship
+ln -sf "$SCRIPT_DIR/starship/starship.toml" ~/.config/starship.toml
+
+# claude
+ln -sf "$SCRIPT_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+
+echo "Done."
