@@ -71,4 +71,19 @@ ln -sfn "$SCRIPT_DIR/nvim" ~/.config/nvim
 mkdir -p ~/.config/karabiner
 ln -sf "$SCRIPT_DIR/karabiner/karabiner.json" ~/.config/karabiner/karabiner.json
 
+# zsh
+ln -sf "$SCRIPT_DIR/zsh/.zshrc" ~/.zshrc
+ln -sf "$SCRIPT_DIR/zsh/.zaliases" ~/.zaliases
+
+# git
+ln -sf "$SCRIPT_DIR/git/.gitconfig" ~/.gitconfig
+
+# starship
+mkdir -p ~/.config
+ln -sf "$SCRIPT_DIR/starship/starship.toml" ~/.config/starship.toml
+
+# claude
+mkdir -p ~/.claude
+ln -sf "$SCRIPT_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+
 echo "Done."

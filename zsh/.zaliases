@@ -1,0 +1,9 @@
+alias python="python3"
+alias pip="pip3"
+
+# eza replaces ls (overrides oh-my-zsh defaults)
+alias ls="eza --icons --git"
+alias l="eza -la --icons --git"
+alias ll="eza -l --icons --git"
+alias la="eza -la --icons --git"
+alias lt="eza --tree --icons --git"
