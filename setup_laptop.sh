@@ -18,29 +18,6 @@ else
     echo "Homebrew is already installed"
 fi
 
-if ! command -v gh &> /dev/null; then
-    echo "Installing gh..."
-    brew install gh
-else
-    echo "gh is already installed"
-fi
-
-# Install iterm2 Terminal emulator
-if [ -z $(mdfind "kMDItemCFBundleIdentifier == com.googlecode.iterm2") ]; then
-    echo "Installing iterm2..."
-    brew install --cask iterm2
-else
-    echo "iterm2 is already installed"
-fi
-
-# Install Visual Studio Code
-if ! command -v code &> /dev/null; then
-    echo "Installing vscode..."
-    brew install --cask visual-studio-code
-else
-    echo "vscode is already installed"
-fi
-
 # Install Oh My Zsh
 if [[ ! -d ~/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -64,11 +41,10 @@ echo "Symlinking configs..."
 ln -sf "$SCRIPT_DIR/tmux/.tmux.conf" ~/.tmux.conf
 
 # neovim
-mkdir -p ~/.config
+mkdir -p ~/.config ~/.config/karabiner ~/.claude
 ln -sfn "$SCRIPT_DIR/nvim" ~/.config/nvim
 
 # karabiner
-mkdir -p ~/.config/karabiner
 ln -sf "$SCRIPT_DIR/karabiner/karabiner.json" ~/.config/karabiner/karabiner.json
 
 # zsh
@@ -79,11 +55,9 @@ ln -sf "$SCRIPT_DIR/zsh/.zaliases" ~/.zaliases
 ln -sf "$SCRIPT_DIR/git/.gitconfig" ~/.gitconfig
 
 # starship
-mkdir -p ~/.config
 ln -sf "$SCRIPT_DIR/starship/starship.toml" ~/.config/starship.toml
 
 # claude
-mkdir -p ~/.claude
 ln -sf "$SCRIPT_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
 echo "Done."

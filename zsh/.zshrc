@@ -40,14 +40,6 @@ export MAX_THINKING_TOKENS=16000
 
 eval "$(direnv hook zsh)"
 
-# Fast compinit: only rebuild cache once per day
-fpath+=~/.zfunc
-autoload -Uz compinit
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
-  compinit -C
-fi
 
 # --- Silent "copy last cmd" widget ------------------------------------
 copy_last_cmd_widget() {
@@ -60,5 +52,3 @@ bindkey -M viins '^G' copy_last_cmd_widget
 bindkey -M vicmd '^G' copy_last_cmd_widget
 
 eval "$(fnm env --use-on-cd)"
-
-export PATH="$HOME/bin:$PATH"
