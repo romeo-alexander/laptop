@@ -44,9 +44,31 @@ fi
 # Install Oh My Zsh
 if [[ ! -d ~/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-   
+
     # To uninstall Oh My Zsh, run the following command:
-    # uninstall_oh_my_zsh 
+    # uninstall_oh_my_zsh
 else
     echo "Oh My Zsh is already installed"
 fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+## Restore Brew dependencies
+echo "Installing Brew dependencies from Brewfile..."
+brew bundle --file="$SCRIPT_DIR/Brewfile" --no-lock
+
+## Symlink configs
+echo "Symlinking configs..."
+
+# tmux
+ln -sf "$SCRIPT_DIR/tmux/.tmux.conf" ~/.tmux.conf
+
+# neovim
+mkdir -p ~/.config
+ln -sfn "$SCRIPT_DIR/nvim" ~/.config/nvim
+
+# karabiner
+mkdir -p ~/.config/karabiner
+ln -sf "$SCRIPT_DIR/karabiner/karabiner.json" ~/.config/karabiner/karabiner.json
+
+echo "Done."
