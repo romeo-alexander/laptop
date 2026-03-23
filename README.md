@@ -28,10 +28,3 @@ After running, set your git email:
 git config --global user.email "your@email.com"
 ```
 
-## Yubikey
-
-To setup your yubikey (after inserting into a USB-C port):
-
-```
-zsh setup_yubikey.sh
-```
