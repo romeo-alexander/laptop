@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "homeport/tap"
 tap "keith/formulae"
 tap "oven-sh/bun"
