@@ -12,6 +12,7 @@ Dotfiles and setup script for a fresh macOS machine.
 - **starship/** — prompt config
 - **git/** — .gitconfig with delta integration
 - **claude/** — Claude Code preferences
+- **iterm/** — iTerm2 preferences (font, colors, keybinds); loaded via a custom prefs folder
 
 ## Setup
 
@@ -27,4 +28,8 @@ After running, set your git email:
 ```
 git config --global user.email "your@email.com"
 ```
+
+**Restart iTerm2** after setup so it picks up prefs from `iterm/`. iTerm writes
+changes back to `iterm/com.googlecode.iterm2.plist`, so commit that file to save
+future tweaks (font, colors, keybinds).
 

@@ -60,4 +60,13 @@ ln -sf "$SCRIPT_DIR/starship/starship.toml" ~/.config/starship.toml
 # claude
 ln -sf "$SCRIPT_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
+## iTerm2: load preferences from this repo
+# Points iTerm2 at iterm/com.googlecode.iterm2.plist so settings (font, colors,
+# keybinds) are versioned here. Requires an iTerm2 restart to take effect.
+if [[ -d "$SCRIPT_DIR/iterm" ]]; then
+    echo "Configuring iTerm2 to load prefs from $SCRIPT_DIR/iterm ..."
+    defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$SCRIPT_DIR/iterm"
+    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+fi
+
 echo "Done."
