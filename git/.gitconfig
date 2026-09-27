@@ -2,7 +2,8 @@
 ############################################################
 
 [user]
-	name  = romeo
+	name = Romeo Alexander
+	email = romeo.pr.alexander@gmail.com
 	# email = SET YOUR EMAIL HERE
 
 [core]

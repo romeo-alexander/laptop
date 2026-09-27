@@ -2,14 +2,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 
-# Path modifications
-path=(
-  "$HOME/bin"
-  "$HOME/go/bin"
-  $path
-)
-export PATH
-
 # Completion cache lives outside $HOME
 ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p "$ZCACHEDIR"
@@ -40,7 +32,6 @@ export MAX_THINKING_TOKENS=16000
 
 eval "$(direnv hook zsh)"
 
-
 # --- Silent "copy last cmd" widget ------------------------------------
 copy_last_cmd_widget() {
   print -rn -- "$history[$((HISTCMD-1))]" | pbcopy
@@ -52,3 +43,4 @@ bindkey -M viins '^G' copy_last_cmd_widget
 bindkey -M vicmd '^G' copy_last_cmd_widget
 
 eval "$(fnm env --use-on-cd)"
+export PATH="$HOME/.local/bin:$PATH"
