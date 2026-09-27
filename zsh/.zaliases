@@ -7,3 +7,5 @@ alias l="eza -la --icons --git"
 alias ll="eza -l --icons --git"
 alias la="eza -la --icons --git"
 alias lt="eza --tree --icons --git"
+
+alias a="gws-agenda"

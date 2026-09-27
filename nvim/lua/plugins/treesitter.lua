@@ -8,6 +8,7 @@ return {
         "python", "lua", "bash",
         "json", "yaml", "sql",
         "markdown", "markdown_inline",
+        "lean",
       },
     })
   end,
