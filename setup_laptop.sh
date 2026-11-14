@@ -28,6 +28,13 @@ else
     echo "Oh My Zsh is already installed"
 fi
 
+# Install tmux plugin manager (then press prefix + I inside tmux to install plugins)
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+    echo "TPM is already installed"
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 ## Restore Brew dependencies

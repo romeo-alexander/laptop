@@ -20,6 +20,10 @@ source "$ZSH/oh-my-zsh.sh"
 ############################ 3. Prompt, key-bindings, aliases #############
 eval "$(starship init zsh)"
 set -o vi
+export KEYTIMEOUT=1                    # no delay after Esc in vi mode
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line   # Esc v → edit current command in $EDITOR
 source ~/.zaliases
 
 ############################ 4. Secrets & project env #####################
